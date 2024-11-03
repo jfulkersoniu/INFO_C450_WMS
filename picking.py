@@ -19,7 +19,7 @@ def pick_orders():
             inventory_item = act_inv.find_one({"upc": upc})
 
             # Prompt for location confirmation
-             while True:
+            while True:
                 location_input = input(f"Item UPC: {upc}, Quantity needed: {quantity_needed}. Please confirm the location: {inventory_item['location']} ")
                 if location_input.strip() == inventory_item["location"]:
                     break

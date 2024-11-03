@@ -1,4 +1,5 @@
 import cluster
+from cluster import db
 
 def test_pack_inventory():
     order_id = input("Enter order ID to pack: ")

@@ -10,7 +10,7 @@ def main():
         generate_test_orders()
         print("Test orders have been successfully generated and are ready for picking.")
     else:
-        print("No orders were generated today.")
+        print("No orders were generated.")
 
 if __name__ == "__main__":
     main()
