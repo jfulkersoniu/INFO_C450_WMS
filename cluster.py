@@ -1,6 +1,7 @@
 from pymongo import MongoClient
+import key
 
-cluster = "mongodb+srv://jonfulk:KJfjIaL91fNQijwb@cluster0.m6ewe.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0"
+cluster = f"mongodb+srv://jonfulk:{key.key}@cluster0.m6ewe.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0"
 client = MongoClient(cluster)
 
 #print(client.list_database_names())
