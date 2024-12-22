@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Picking{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Order Picking</h1>
+    <form method="POST" action="{{ url_for('picking.picking') }}">
+        <button type="submit" name="action" value="begin_picking">Begin Picking</button>
+        <button type="submit" name="action" value="logout">Logout</button>
+    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}

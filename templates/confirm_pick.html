@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirm Picking{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Confirm Picking</h1>
+    <p>Order ID: {{ order_details.order_id }}</p>
+
+    {% if order_details.order_items is defined and order_details.order_items %}
+        <form method="POST" action="{{ url_for('picking.confirm_picking') }}">
+            {% for item in order_details.order_items %}
+            <div class="form-group">
+                <label>Location: {{ item.location }}</label>
+                <input type="text" name="location_{{ item.upc }}" required>
+            </div>
+            <div class="form-group">
+                <label>UPC: {{ item.upc }}</label>
+                <input type="text" name="upc_{{ item.upc }}" required>
+            </div>
+            <div class="form-group">
+                <label>Quantity: {{ item.quantity }}</label>
+                <input type="number" name="quantity_{{ item.upc }}" required>
+            </div>
+            {% endfor %}
+            <input type="hidden" name="order_id" value="{{ order_details.order_id }}">
+            <button type="submit">Confirm Picking</button>
+        </form>
+    {% else %}
+        <p>No items found in order.</p>
+    {% endif %}
+</div>
+{% endblock %}

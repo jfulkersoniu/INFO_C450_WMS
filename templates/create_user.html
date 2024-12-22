@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Create User{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Create New User</h1>
+    <form method="POST" action="{{ url_for('admin.create_user') }}">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        
+        <label for="department">Department:</label>
+        <select id="department" name="department" required>
+            <option value="Admin">Admin</option>
+            <option value="Receiving">Receiving</option>
+            <option value="Picking">Picking</option>
+            <option value="Shipping">Shipping</option>
+        </select><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+        
+        <button type="submit">Create User</button>
+    </form>
+
+    <!-- Button to return to admin dashboard -->
+    <a href="{{ url_for('admin.admin_dashboard') }}">
+        <button type="button">Return to Dashboard</button>
+    </a>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}

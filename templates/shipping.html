@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}WMS | Shipping{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Order Shipping</h1>
+    <form method="POST" action="{{ url_for('shipping.shipping') }}">
+        <button type="submit" name="action" value="begin_packing">Begin Packing</button>
+        <button type="submit" name="action" value="logout">Logout</button>
+    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}

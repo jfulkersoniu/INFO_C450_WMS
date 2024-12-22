@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirm Packing{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Confirm Packing</h1>
+    <p>Order ID: {{ order_details.order_id }}</p>
+
+    {% if order_details.items is defined and order_details.items %}
+        <form method="POST" action="{{ url_for('shipping.confirm_packing') }}">
+            <div class="form-group">
+                <label>Carton ID:</label>
+                <input type="text" name="carton_id" required>
+            </div>
+            <input type="hidden" name="order_id" value="{{ order_details.order_id }}">
+            <button type="submit">Confirm Packing</button>
+        </form>
+    {% else %}
+        <p>No items found in order.</p>
+    {% endif %}
+</div>
+{% endblock %}
